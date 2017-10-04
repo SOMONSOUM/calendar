@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="logout()">
+             <ion-icon name="log-out"></ion-icon>
+           </button>
+    </ion-buttons>
+    <ion-title>Calendar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      {{ user.displayName }}
+    </ion-card-header>
+    <img [src]="user.imageUrl">
+
+    <ion-card-content>
+      <ion-card-title>
+        {{ user.email }}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-card *ngFor="let ev of events">
+      <ion-card-header>
+        {{ ev.summary }}
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ ev.start.dateTime | date:'short' }} - {{ ev.end.dateTime | date:'short' }}</p>
+        <p>Creator: {{ ev.creator.displayName }}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>
